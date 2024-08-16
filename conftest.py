@@ -4,6 +4,7 @@ from datetime import datetime
 from utilities.test_data import TestData
 import os
 
+
 @pytest.fixture(params=["chrome", "edge"])
 def initialize_driver(request):
     if request.param == "chrome":
@@ -32,3 +33,12 @@ def pytest_configure(config):
 
     # Set the HTML report path in the pytest config
     config.option.htmlpath = report_filename
+
+    # Specify the directory for Allure results
+    allure_report_dir = os.path.join(os.getcwd(), 'reports', 'allure-results')
+
+    # Ensure the directory exists
+    os.makedirs(allure_report_dir, exist_ok=True)
+
+    # Set the --alluredir option programmatically
+    config.option.allure_report_dir = allure_report_dir
