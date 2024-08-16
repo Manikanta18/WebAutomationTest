@@ -1,72 +1,21 @@
-# Byte-compiled / optimized / DLL files
+# Python bytecode files
 __pycache__/
 *.py[cod]
 *$py.class
 
-# C extensions
-*.so
-
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
-
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Pytest
-reports/             # Reports folder
-.cache/              # Pytest cache directory
-htmlcov/             # Coverage reports
-.coverage            # Coverage data file
-.coverage.*          # Coverage data files
-*.cover              # Coverage files
-.cache/              # Pytest cache directory
-.pytest_cache/       # Pytest cache directory
-coverage.xml         # Coverage report in XML format
-test-results.xml     # XML test results
-report.html          # HTML test report (if not saved in a specific directory)
-
-# MyPy
-.mypy_cache/
-.dmypy.json
-dmypy.json
+# pytest cache and temporary files
+.cache/
+.pytest_cache/
+*.cover
+.coverage
+.coverage.*
+nosetests.xml
+test-results.xml
 
 # Pytest HTML reports
-reports/             # Exclude entire reports directory where reports are saved
+reports/
 
-# Logs and debug files
-*.log
-*.txt
-*.out
-*.err
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# Environments
+# Virtual environments
 .env
 .venv
 env/
@@ -75,22 +24,13 @@ ENV/
 env.bak/
 venv.bak/
 
-# PyCharm
+# IDE and editor directories/files
 .idea/
-*.iml
-
-# VSCode
 .vscode/
 
-# MacOS
+# Log files
+*.log
+
+# OS-specific files
 .DS_Store
-
-# Windows
 Thumbs.db
-ehthumbs.db
-Desktop.ini
-$RECYCLE.BIN/
-*.lnk
-
-# Additional directories and files you may want to exclude
-node_modules/        # If your project uses Node.js
