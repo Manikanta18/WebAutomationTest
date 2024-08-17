@@ -1,5 +1,4 @@
 import time
-from utilities.urls import Urls
 from pages.dashboard_page import DashboardPage
 from tests.base_test import BaseTest
 from utilities.test_data import TestData
@@ -10,42 +9,12 @@ pytestmark = [pytest.mark.sanity]
 
 class TestDashboard(BaseTest):
     @pytest.mark.smoke
-    def test_navbar_fish(self):
+    @pytest.mark.parametrize("animal", ["Dogs", "Reptiles", "Cats", "Birds", "Fish"])
+    def test_navbar_product_buttons(self, animal):
         dashboard = DashboardPage(self.driver)
-        print(dashboard.get_title())
-        dashboard.click_nav_button("fish")
-        title = dashboard.get_text(dashboard.locate.dashboard_title)
-        assert title == 'Fish'
-
-    @pytest.mark.smoke
-    def test_navbar_dogs(self):
-        dashboard = DashboardPage(self.driver)
-        print(dashboard.get_title())
-        dashboard.click_nav_button("dogs")
-        title = dashboard.get_text(dashboard.locate.dashboard_title)
-        assert title == 'Dogs'
-
-    @pytest.mark.smoke
-    def test_navbar_reptiles(self):
-        dashboard = DashboardPage(self.driver)
-        print(dashboard.get_title())
-        dashboard.click_nav_button("reptiles")
-        title = dashboard.get_text(dashboard.locate.dashboard_title)
-        assert title == 'Reptiles'
-
-    @pytest.mark.smoke
-    def test_navbar_cats(self):
-        dashboard = DashboardPage(self.driver)
-        dashboard.click_nav_button("cats")
-        title = dashboard.get_text(dashboard.locate.dashboard_title)
-        assert title == 'Cats'
-
-    @pytest.mark.smoke
-    def test_navbar_birds(self):
-        dashboard = DashboardPage(self.driver)
-        dashboard.click_nav_button("birds")
-        title = dashboard.get_text(dashboard.locate.dashboard_title)
-        assert title == 'Birds'
+        dashboard.click_nav_button(animal)
+        title = dashboard.get_dashboard_title()
+        assert title == animal
 
     @pytest.mark.smoke
     def test_search_field(self):

@@ -8,7 +8,7 @@ class DashboardPage(BasePage):
         super().__init__(driver)
 
     def click_nav_button(self, name):
-        self.click(DashboardLocatorFields.navbar_links[name])
+        self.click(DashboardLocatorFields.get_navbar_link_locator(name))
 
     def input_text_search(self, value):
         self.set(DashboardLocatorFields.search_field, value)
@@ -19,3 +19,6 @@ class DashboardPage(BasePage):
     def search_something(self, value):
         self.input_text_search(value)
         self.click(DashboardLocatorFields.search_button)
+
+    def get_dashboard_title(self):
+        return self.get_text(DashboardLocatorFields.dashboard_title)
