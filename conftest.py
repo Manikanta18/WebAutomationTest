@@ -47,3 +47,5 @@ def pytest_configure(config):
 
     # Set the --alluredir option programmatically
     config.option.allure_report_dir = allure_report_dir
+
+    # command to run allure : allure serve reports/allure-results
