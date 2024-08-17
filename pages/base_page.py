@@ -1,5 +1,3 @@
-from selenium.webdriver.common.by import By
-
 
 class BasePage:
     """
@@ -25,6 +23,5 @@ class BasePage:
     def get_title(self):
         return self.driver.title
 
-    def click_left_menu_page(self, page_name):
-        page = By.LINK_TEXT, page_name
-        self.click(page)
+    def get_current_url(self):
+        return self.driver.current_url

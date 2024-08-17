@@ -2,7 +2,7 @@ import time
 
 from pages.login_page import LoginPage
 from tests.base_test import BaseTest
-from utilities.test_data import TestData
+from utilities.urls import Urls
 import pytest
 
 pytestmark = [pytest.mark.regression, pytest.mark.sanity]
@@ -11,16 +11,19 @@ pytestmark = [pytest.mark.regression, pytest.mark.sanity]
 class TestLogin(BaseTest):
 
     @pytest.mark.integration
-    def test_valid_credentials(self):
+    def test_customer_login(self):
         login_page = LoginPage(self.driver)
-        login_page.log_into_application(TestData.customer['email'], TestData.customer['password'])
-        actual_title = login_page.get_title()
-        assert actual_title == "Dashboard"
+        time.sleep(0.5)
+        login_page.click_login_button("customer")
+        time.sleep(0.5)
+        current_page = login_page.get_current_url()
+        assert current_page == Urls.customer_login
 
     @pytest.mark.smoke
-    def test_invalid_credentials(self):
+    def test_manager_login(self):
         login_page = LoginPage(self.driver)
-        login_page.log_into_application(TestData.invalid_customer['email'], TestData.invalid_customer['password'])
-        time.sleep(1)
-        actual_message = login_page.get_warning_message()
-        assert actual_message.__contains__("Invalid Login")
+        time.sleep(0.5)
+        login_page.click_login_button("manager")
+        time.sleep(0.5)
+        current_page = login_page.get_current_url()
+        assert current_page == Urls.manager
