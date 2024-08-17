@@ -16,8 +16,9 @@ def initialize_driver(request):
     elif request.param == "edge":
         driver = webdriver.Edge()
     request.cls.driver = driver
+    driver.get(Urls.home)
     print("Browser: ", request.param)
-    print("Test URL: ", Urls.login)
+    print("Test URL: ", Urls.home)
     driver.maximize_window()
     yield
     print("Close Driver")

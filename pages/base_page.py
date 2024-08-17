@@ -25,3 +25,8 @@ class BasePage:
 
     def get_current_url(self):
         return self.driver.current_url
+
+    def check_if_page_contains_text(self, value):
+        if value in self.driver.page_source:
+            return True
+        return False
