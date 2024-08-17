@@ -16,6 +16,9 @@ class TestLogin(BaseTest):
     def test_customer_login(self):
         self.driver.get(Urls.login)
         login_page = LoginPage(self.driver)
-        login_page.log_into_application(TestData.valid_user_login_data["username"], TestData.valid_user_login_data["password"])
+        test_data = TestData.valid_user_login_data
+
+        login_page.log_into_application(test_data.get("username"), test_data.get("password"))
         is_logged_in = login_page.check_if_page_contains_text("My Account")
+
         assert is_logged_in
