@@ -26,3 +26,13 @@ class DashboardLocatorFields:
 
     product_add_to_cart_button = (By.XPATH, "//*[@id='CenterForm']//a[text()='Add to Cart']")
     product_name_text = (By.XPATH, "//*[@id='CenterForm']/h3")
+
+    shopping_cart_title = (By.XPATH, "//*[@id='Cart']/h3")
+    check_out_button = (By.XPATH, "//*[@id='Cart']/a")
+
+    @staticmethod
+    def get_billing_button_locator(button_type):
+        return By.XPATH, f"//*[@id='CenterForm']/form/div/button[text()='{button_type}']"
+
+    order_message = (By.XPATH, "//*[@id='MessageBar']/p")
+
