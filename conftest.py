@@ -7,6 +7,7 @@ import os
 
 
 # @pytest.fixture(params=["chrome", "edge", "firefox"])
+# initializing driver/s
 @pytest.fixture(params=["chrome"])
 def initialize_driver(request):
     if request.param == "chrome":
@@ -25,6 +26,7 @@ def initialize_driver(request):
     driver.close()
 
 
+# configuration for html and allure reports
 def pytest_configure(config):
     # Ensure the reports directory exists
     reports_dir = "reports"
