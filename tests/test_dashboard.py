@@ -3,7 +3,6 @@ from pages.dashboard_page import DashboardPage
 from tests.base_test import BaseTest
 from utilities.test_data import TestData
 import pytest
-import logging
 
 pytestmark = [pytest.mark.sanity]
 
