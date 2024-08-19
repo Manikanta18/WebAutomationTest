@@ -48,8 +48,8 @@ The framework is configured to create a new log file named `test_log.log` in the
 
 ### Test Reports
 
-- HTML reports are generated after each test run and stored in the `reports/` folder. This folder also includes `allure-results` for generating Allure reports.
-- To view the detailed test execution report, open `test_report.html` in the `reports/` folder.
+- HTML reports are generated after each test run with the current stamp and stored in the `reports/` folder. This folder also includes `allure-results` for generating Allure reports.
+- To view the detailed test execution report, open `report_<latest_timestamp>.html` in the `reports/` folder.
 
 - Use the Allure command to generate the report from the results directory.
   ```bash
