@@ -1,9 +1,9 @@
 import pytest
 from selenium import webdriver
 from datetime import datetime
-from utilities.test_data import TestData
 from utilities.urls import Urls
 import os
+import logging
 
 
 # @pytest.fixture(params=["chrome", "edge", "firefox"])
@@ -18,11 +18,11 @@ def initialize_driver(request):
         driver = webdriver.Edge()
     request.cls.driver = driver
     driver.get(Urls.home)
-    print("Browser: ", request.param)
-    print("Test URL: ", Urls.home)
+    logging.info(f"Browser: {request.param}")
+    logging.info(f"Test URL: {Urls.home}")
     driver.maximize_window()
     yield
-    print("Close Driver")
+    logging.info("Close Driver")
     driver.close()
 
 
@@ -49,3 +49,33 @@ def pytest_configure(config):
     config.option.allure_report_dir = allure_report_dir
 
     # command to run allure : allure serve reports/allure-results
+
+    # Configure logging
+    # Set up logging
+    logging.basicConfig(
+        filename='test_log.log',  # Log file name
+        level=logging.INFO,  # Logging level
+        format='%(asctime)s - %(levelname)s - %(message)s',  # Log format
+        filemode='w'  # Overwrite the log file each time
+    )
+    logging.info("Logging started")
+
+
+def pytest_runtest_setup(item):
+    # Log the name of the current test case
+    logging.info(f"Starting test case: {item.name}")
+
+
+def pytest_runtest_makereport(item, call):
+    # Log the test case failure if it failed during the call phase
+    if call.when == 'call' and call.excinfo is not None:
+        # Extract file name, line number, and error message
+        tb = call.excinfo.traceback[-1]  # Get the last traceback entry
+        file_name = os.path.basename(tb.path)
+        line_number = tb.lineno + 1
+        error_message = call.excinfo.value
+
+        # Log the failure details
+        logging.error(f"Test case {item.name} failed")
+        logging.error(f"File: {file_name}, Line: {line_number}")
+        logging.error(f"Error: {error_message}")
