@@ -71,7 +71,3 @@ The framework requires the following Python packages:
 - `pytest-html`
 - `allure-pytest` (for Allure reporting)
 - Any other dependencies listed in `requirements.txt`
-
-## License
-
-This project is licensed under the MIT License. See the `LICENSE` file for more details.
